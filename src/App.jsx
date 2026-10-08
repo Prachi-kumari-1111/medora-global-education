@@ -31,12 +31,12 @@ function App() {
        <Route path="/login" element={<PublicAuth><Auth /></PublicAuth>} />
        <Route path="/signup" element={<PublicAuth><Auth /></PublicAuth>} />
        <Route path="/" element={<Home />} />
-        <Route path="/programs" element={<Protected><Programs/></Protected>} />
-        <Route path="/classes" element={<Protected><Classes/></Protected>} />
-        <Route path="/learning-models" element={<Protected><LearningModelsPage/></Protected>} />
-        <Route path="/success-stories" element={<Protected><SuccessStories/></Protected>} />
-        <Route path="/about" element={<Protected><About/></Protected>} />
-        <Route path="/contact" element={<Protected><Contact/></Protected>} />
+<Route path="/programs" element={<Programs />} />
+<Route path="/classes" element={<Classes />} />
+<Route path="/learning-models" element={<LearningModelsPage />} />
+<Route path="/success-stories" element={<SuccessStories />} />
+<Route path="/about" element={<About />} />
+<Route path="/contact" element={<Contact />} />
         <Route path="*" element={<Navigate to="/" replace/>} />
       </Routes>
     </main>
