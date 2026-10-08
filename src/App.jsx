@@ -31,16 +31,25 @@ function App() {
        <Route path="/login" element={<PublicAuth><Auth /></PublicAuth>} />
        <Route path="/signup" element={<PublicAuth><Auth /></PublicAuth>} />
        <Route path="/" element={<Home />} />
-<Route path="/programs" element={<Programs />} />
-<Route path="/classes" element={<Classes />} />
-<Route path="/learning-models" element={<LearningModelsPage />} />
-<Route path="/success-stories" element={<SuccessStories />} />
-<Route path="/about" element={<About />} />
-<Route path="/contact" element={<Contact />} />
+      <Route path="/programs" element={<Programs />} />
+      <Route path="/classes" element={<Classes />} />
+     <Route path="/learning-models" element={<LearningModelsPage />} />
+     <Route path="/success-stories" element={<SuccessStories />} />
+     <Route path="/about" element={<About />} />
+     <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<Navigate to="/" replace/>} />
       </Routes>
     </main>
-    {localStorage.getItem("medora_auth")==="true" && <><Footer/><a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" className="fixed bottom-5 right-5 z-40 flex items-center gap-2 rounded-full bg-emerald-500 px-4 py-3 text-xs font-black text-white shadow-xl shadow-emerald-200 transition hover:-translate-y-1"><MessageCircle size={17}/> Chat With Us</a></>}
+   <Footer />
+
+<a
+  href="https://wa.me/919876543210"
+  target="_blank"
+  rel="noreferrer"
+  className="fixed bottom-5 right-5 z-40 rounded-full bg-emerald-500 px-5 py-3 text-sm font-semibold text-white shadow-lg hover:bg-emerald-600 transition"
+>
+  💬 Chat With Us
+</a>
   </div>;
 }
 export default App;

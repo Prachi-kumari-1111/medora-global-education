@@ -2,35 +2,483 @@
 @import "tailwindcss";
 
 :root {
-  font-family: 'Roboto', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: 'Roboto', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   color: #0b1220;
   background: #f8fbff;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-html { scroll-behavior: smooth; }
-body { margin: 0; min-width: 320px; background: #f8fbff; }
-button, input, select, textarea { font: inherit; }
 
-@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-@keyframes drift { 0%,100% { transform: translate3d(0,0,0) scale(1); } 50% { transform: translate3d(10px,-10px,0) scale(1.04); } }
-@keyframes slowZoom { from { transform: scale(1); } to { transform: scale(1.06); } }
-@keyframes reveal { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes softPulse { 0%,100% { opacity:.5; transform:scale(1); } 50% { opacity:.85; transform:scale(1.06); } }
-.float-soft { animation: float 5s ease-in-out infinite; }
-.drift-soft { animation: drift 8s ease-in-out infinite; }
-.hero-zoom { animation: slowZoom 12s ease-out both; }
-.reveal-up { animation: reveal .7s ease-out both; }
-.soft-pulse { animation: softPulse 5s ease-in-out infinite; }
+* {
+  box-sizing: border-box;
+}
 
-.shadow-soft { box-shadow: 0 24px 70px rgba(24, 61, 120, .14); }
-.shadow-card { box-shadow: 0 12px 36px rgba(24, 61, 120, .08); }
-.glass { background: rgba(255,255,255,.78); backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.72); }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
 
-::-webkit-scrollbar { width: 9px; }
-::-webkit-scrollbar-thumb { background: #a9bfdf; border-radius: 999px; }
-::-webkit-scrollbar-track { background: #edf4fb; }
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #f8fbff;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+img,
+video {
+  max-width: 100%;
+}
+
+img {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ================================
+   EXISTING MEDORA ANIMATIONS
+================================ */
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes drift {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(10px, -10px, 0) scale(1.04);
+  }
+}
+
+@keyframes slowZoom {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes softPulse {
+  0%, 100% {
+    opacity: .5;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: .85;
+    transform: scale(1.06);
+  }
+}
+
+.float-soft {
+  animation: float 5s ease-in-out infinite;
+}
+
+.drift-soft {
+  animation: drift 8s ease-in-out infinite;
+}
+
+.hero-zoom {
+  animation: slowZoom 12s ease-in-out both;
+}
+
+.reveal-up {
+  animation: reveal .7s ease-out both;
+}
+
+.soft-pulse {
+  animation: softPulse 5s ease-in-out infinite;
+}
+
+/* ================================
+   CUSTOM SHADOWS / GLASS
+================================ */
+
+.shadow-soft {
+  box-shadow: 0 24px 70px rgba(24, 61, 120, .14);
+}
+
+.shadow-card {
+  box-shadow: 0 12px 36px rgba(24, 61, 120, .08);
+}
+
+.glass {
+  background: rgba(255, 255, 255, .78);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, .72);
+}
+
+/* ================================
+   GENERAL RESPONSIVE FIX
+================================ */
+
+section,
+main,
+header,
+footer {
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  overflow-wrap: break-word;
+}
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 1024px) {
+
+  .text-7xl {
+    font-size: 4.5rem !important;
+    line-height: 1.05 !important;
+  }
+
+  .text-6xl {
+    font-size: 4rem !important;
+    line-height: 1.05 !important;
+  }
+
+  .text-5xl {
+    font-size: 3.25rem !important;
+  }
+
+  .px-16 {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+
+  .px-12 {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 767px) {
+
+  html,
+  body,
+  #root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* ---------- TYPOGRAPHY ---------- */
+
+  .text-7xl {
+    font-size: 2.8rem !important;
+    line-height: 1.03 !important;
+  }
+
+  .text-6xl {
+    font-size: 2.6rem !important;
+    line-height: 1.05 !important;
+  }
+
+  .text-5xl {
+    font-size: 2.3rem !important;
+    line-height: 1.08 !important;
+  }
+
+  .text-4xl {
+    font-size: 2rem !important;
+    line-height: 1.1 !important;
+  }
+
+  .text-3xl {
+    font-size: 1.7rem !important;
+    line-height: 1.15 !important;
+  }
+
+  .text-2xl {
+    font-size: 1.45rem !important;
+  }
+
+  /* ---------- PADDING ---------- */
+
+  .px-16,
+  .px-12,
+  .px-10,
+  .px-8 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .py-32,
+  .py-28,
+  .py-24,
+  .py-20 {
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+
+  /* ---------- GRIDS ---------- */
+
+  .grid-cols-2,
+  .grid-cols-3,
+  .grid-cols-4,
+  .grid-cols-5 {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Tailwind responsive grids */
+
+  .sm\:grid-cols-2,
+  .md\:grid-cols-2,
+  .lg\:grid-cols-2,
+  .md\:grid-cols-3,
+  .lg\:grid-cols-3,
+  .lg\:grid-cols-4 {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* ---------- FLEX ---------- */
+
+  .flex-row {
+    flex-direction: column !important;
+  }
+
+  /* ---------- HERO ---------- */
+
+  .hero-title {
+    font-size: 2.4rem !important;
+    line-height: 1.05 !important;
+  }
+
+  /* Large fixed heights ko mobile me reduce karo */
+
+  .h-\[700px\],
+  .h-\[650px\],
+  .h-\[600px\],
+  .min-h-\[700px\],
+  .min-h-\[650px\],
+  .min-h-\[600px\] {
+    height: auto !important;
+    min-height: 520px !important;
+  }
+
+  /* ---------- IMAGES ---------- */
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* ---------- BUTTONS ---------- */
+
+  button,
+  a {
+    max-width: 100%;
+  }
+
+  /* ---------- FORMS ---------- */
+
+  input,
+  textarea,
+  select {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  /* ---------- CARDS ---------- */
+
+  .rounded-\[38px\],
+  .rounded-\[32px\],
+  .rounded-3xl {
+    border-radius: 22px !important;
+  }
+
+  /* ---------- FOOTER ---------- */
+
+  footer .grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* ---------- FLOATING CHAT ---------- */
+
+  .fixed.bottom-5.right-5 {
+    right: 1rem !important;
+    bottom: 1rem !important;
+  }
+}
+
+/* ================================
+   SMALL PHONES
+================================ */
+
+@media (max-width: 480px) {
+
+  .text-7xl {
+    font-size: 2.2rem !important;
+  }
+
+  .text-6xl {
+    font-size: 2.15rem !important;
+  }
+
+  .text-5xl {
+    font-size: 1.95rem !important;
+  }
+
+  .text-4xl {
+    font-size: 1.75rem !important;
+  }
+
+  .text-3xl {
+    font-size: 1.5rem !important;
+  }
+
+  .hero-title {
+    font-size: 2rem !important;
+  }
+
+  .p-10 {
+    padding: 1.5rem !important;
+  }
+
+  .p-8 {
+    padding: 1.25rem !important;
+  }
+
+  .p-6 {
+    padding: 1rem !important;
+  }
+
+  .gap-12 {
+    gap: 1.75rem !important;
+  }
+
+  .gap-10 {
+    gap: 1.5rem !important;
+  }
+
+  .gap-8 {
+    gap: 1.25rem !important;
+  }
+}
+
+/* ================================
+   MOBILE NAVBAR SUPPORT
+================================ */
+
+@media (max-width: 767px) {
+
+  header {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  header > div {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  nav {
+    max-width: 100%;
+  }
+
+  nav a {
+    white-space: nowrap;
+  }
+}
+
+/* ================================
+   SCROLLBAR
+================================ */
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #a9bfdf;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-track {
+  background: #edf4fb;
+}
+
+/* ================================
+   ACCESSIBILITY
+================================ */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+/* ================================
+   REDUCED MOTION
+================================ */
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
