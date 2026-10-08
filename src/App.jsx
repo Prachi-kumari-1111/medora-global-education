@@ -30,7 +30,7 @@ function App() {
       <Routes>
        <Route path="/login" element={<PublicAuth><Auth /></PublicAuth>} />
        <Route path="/signup" element={<PublicAuth><Auth /></PublicAuth>} />
-        <Route path="/" element={<Protected><Home/></Protected>} />
+       <Route path="/" element={<Home />} />
         <Route path="/programs" element={<Protected><Programs/></Protected>} />
         <Route path="/classes" element={<Protected><Classes/></Protected>} />
         <Route path="/learning-models" element={<Protected><LearningModelsPage/></Protected>} />
