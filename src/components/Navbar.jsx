@@ -16,7 +16,6 @@ export default function Navbar() {
 
   const logout = () => {
     localStorage.removeItem("medora_auth");
-    localStorage.removeItem("medora_user");
     setOpen(false);
     navigate("/login", { replace: true });
   };
@@ -41,16 +40,14 @@ export default function Navbar() {
             }>{label}</NavLink>
           ))}
         </nav>}
-
-        <div className="hidden items-center gap-2 sm:flex">
-          {!isAuthed ? <>
-            <button onClick={() => navigate("/login")} className="inline-flex items-center gap-1.5 rounded-full px-4 py-2.5 text-xs font-bold text-slate-700 transition hover:bg-slate-50 hover:text-blue-700"><LogIn size={14}/> Log in</button>
-            <button onClick={() => navigate("/signup")} className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-4 py-2.5 text-xs font-bold text-slate-800 transition hover:border-blue-200 hover:text-blue-700"><UserPlus size={14}/> Sign up</button>
-          </> : <>
-            <button onClick={() => navigate("/contact")} className="rounded-full bg-slate-950 px-5 py-2.5 text-xs font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-blue-700">Book Free Counselling</button>
-            <button onClick={logout} className="rounded-full px-3 py-2 text-xs font-semibold text-slate-500 transition hover:bg-slate-50 hover:text-red-600">Log out</button>
-          </>}
-        </div>
+     {isAuthed && (
+  <button
+    onClick={logout}
+    className="rounded-full px-4 py-2.5 text-xs font-semibold text-red-600 transition hover:bg-red-50"
+  >
+    Log out
+  </button>
+)}
 
         <button className="rounded-xl p-2 lg:hidden" onClick={() => setOpen(!open)} aria-label="Toggle menu">{open ? <X/> : <Menu/>}</button>
       </div>
